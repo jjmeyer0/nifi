@@ -193,7 +193,7 @@ public class GetHDFSEvents extends AbstractHadoopProcessor {
             if (eventBatch != null && eventBatch.getEvents() != null) {
                 if (eventBatch.getEvents().length > 0) {
                     List<FlowFile> flowFiles = new ArrayList<>(eventBatch.getEvents().length);
-                    for (Event e : eventBatch.getEvents()) {
+                    for (final Event e : eventBatch.getEvents()) {
                         if (toProcessEvent(context, e)) {
                             getLogger().debug("Creating flow file for event: {}.", new Object[]{e});
                             final String path = getPath(e);
